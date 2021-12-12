@@ -16,7 +16,6 @@ public class SearchLocalResDto {
     private int total;
     private int start;
     private int display;
-    private String category;
     private List<SearchItems> items;
 
     
@@ -32,6 +31,7 @@ public class SearchLocalResDto {
         private String telephone;
         private String address;
         private String roadAddress;
+        private String category;
         private int mapx;
         private int mapy;
 

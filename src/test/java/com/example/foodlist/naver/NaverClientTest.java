@@ -4,7 +4,10 @@ import com.example.foodlist.naver.dto.SearchImgReqDto;
 import com.example.foodlist.naver.dto.SearchImgResDto;
 import com.example.foodlist.naver.dto.SearchLocalReqDto;
 import com.example.foodlist.naver.dto.SearchLocalResDto;
+import com.example.foodlist.restaurant.dto.RestaurantDto;
+import com.example.foodlist.service.RestaurantService;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +24,9 @@ public class NaverClientTest {
 
     @Autowired
     private NaverClient naverClient;
+
+    @Autowired
+    private RestaurantService restaurantService;
 
     @Test
     public void search(){
@@ -40,6 +46,22 @@ public class NaverClientTest {
         // NaverClient naverClient = new NaverClient();
         SearchImgResDto resDto = naverClient.searchImg(searchImgReqDto);
         System.out.println(resDto);
-
     }
+
+    @Test
+    public void searchRestaurant(){
+
+        var result = restaurantService.search("중국집");
+
+        Assertions.assertNotNull(result);
+        logger.info(result.toString());
+    }
+
+    @Test
+    public void testDtoToEntity(){
+        restaurantService.dtoToEntity(new RestaurantDto());
+    }
+
+
+
 }

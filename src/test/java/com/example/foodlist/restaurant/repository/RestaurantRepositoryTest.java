@@ -52,7 +52,7 @@ class RestaurantRepositoryTest {
         returnEntity.setTitle("setTitle updating");
         restaurantRepository.save(returnEntity);
         Assertions.assertEquals("setTitle updating",returnEntity.getTitle());
-        Assertions.assertEquals(1,restaurantRepository.listAll().size());
+        Assertions.assertEquals(1,restaurantRepository.findAll().size());
     }
 
     @Test
@@ -73,7 +73,7 @@ class RestaurantRepositoryTest {
         createEntity();
         restaurantRepository.save(restaurantEntity);
         restaurantRepository.deleteById(1);
-        int count = restaurantRepository.listAll().size();
+        int count = restaurantRepository.findAll().size();
         Assertions.assertEquals(0,count);
     }
 
@@ -85,7 +85,7 @@ class RestaurantRepositoryTest {
              createRestaurantEntity = createEntity();
              restaurantRepository.save(createRestaurantEntity);
         }
-        Assertions.assertEquals(2,restaurantRepository.listAll().size());
+        Assertions.assertEquals(2,restaurantRepository.findAll().size());
 
     }
 }
